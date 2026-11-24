@@ -1,26 +1,31 @@
 import React from 'react'
+import { Link } from 'react-router'
 
 const sidebar = () => {
     return (
         <div id='sidebar-container'>
-            <div id="sidebar-top">
-                <i>👜</i>
-                <h1>Job Tracker</h1>
-            </div>
+            <Link to='/dashboard' id='sidebar-logo'>
+
+                <div id="sidebar-top">
+                    <i>👜</i>
+                    <h1>Job Tracker</h1>
+                </div>
+            </Link>
+
 
             <div id="sidebar-center">
-                <a href=""><h3>Dashboard</h3></a>
-                <a href=""><h3>Add Job</h3></a>
-                <a href="#jobs-box"><h3>My Applications</h3></a>
-                <a href=""><h3>Statistics</h3></a>
-                <a href=""><h3>Setting</h3></a>
+                <Link to='/dashboard'>Dashboard</Link>
+                <Link to='/AddJob'>Add Job</Link>
+                <Link to='/MyApplication'>My Application</Link>
+                <Link to='/Statistics'>Statistics</Link>
+                <Link to='/Settings'>Setting</Link>
             </div>
 
             <div id="sidebar-bottom">
                 <h2>Dream Big</h2>
                 <h3>Apply Smart</h3>
             </div>
-        </div>
+        </div >
     )
 }
 

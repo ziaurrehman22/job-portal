@@ -1,205 +1,138 @@
-import React, { useState } from 'react';
+import React from 'react';
+
 
 function MainArea() {
-    const [jobs, setJobs] = useState([
+    const statsData = [
+        { id: 1, title: 'Total Applications', value: '12' },
+        { id: 2, title: 'Interviews Scheduled', value: '12' },
+        { id: 3, title: 'Offers Received', value: '4' },
+        { id: 4, title: 'Rejected', value: '28' }
+    ];
+
+    const recentJobs = [
         {
             id: 1,
-            logo: 'G',
-            logoColor: '#4285F4',
-            company: 'Google',
+            company: 'TechCorp',
             role: 'Frontend Developer',
-            location: 'Mountain View, CA',
-            date: 'Nov 15, 2026',
-            status: 'Applied',
+            status: 'Interview',
+            statusClass: 'pending',
+            date: '24 Nov 2026'
         },
         {
             id: 2,
-            logo: 'M',
-            logoColor: '#f25022',
-            company: 'Microsoft',
+            company: 'InnoSoft',
             role: 'React Developer',
-            location: 'Redmond, USA',
-            date: 'Nov 10, 2026',
-            status: 'Interview',
+            status: 'Offer',
+            statusClass: 'success',
+            date: '20 Nov 2026'
         },
         {
             id: 3,
-            logo: '∞',
-            logoColor: '#0668E1',
-            company: 'Meta',
-            role: 'Software Engineer',
-            location: 'Menlo Park, USA',
-            date: 'Nov 05, 2026',
+            company: 'DataCloud',
+            role: 'UI/UX Engineer',
             status: 'Rejected',
+            statusClass: 'danger',
+            date: '15 Nov 2026'
         },
         {
             id: 4,
-            logo: '',
-            logoColor: '#000000',
-            company: 'Apple',
-            role: 'Web Developer',
-            location: 'Cupertino, USA',
-            date: 'Oct 28, 2026',
-            status: 'Applied',
+            company: 'CloudScale',
+            role: 'Backend Engineer',
+            status: 'Pending',
+            statusClass: 'pending',
+            date: '22 Nov 2026'
         },
         {
             id: 5,
-            logo: 'a',
-            logoColor: '#FF9900',
-            company: 'Amazon',
-            role: 'Frontend Intern',
-            location: 'Seattle, USA',
-            date: 'Oct 20, 2026',
-            status: 'Applied',
+            company: 'PixelCraft',
+            role: 'UI Designer',
+            status: 'Interview',
+            statusClass: 'pending',
+            date: '18 Nov 2026'
         },
-    ]);
-
-    // 2. Search aur Filter ke liye states
-    const [searchText, setSearchText] = useState('');
-    const [selectedStatus, setSelectedStatus] = useState('All');
-
-    // 3. Stats calculate karna
-    const totalJobs = jobs.length;
-    const appliedJobs = jobs.filter((job) => job.status === 'Applied').length;
-    const interviewJobs = jobs.filter((job) => job.status === 'Interview').length;
-    const rejectedJobs = jobs.filter((job) => job.status === 'Rejected').length;
-
-    // 4. Delete button ka function
-    function deleteJob(id) {
-        const updatedJobs = jobs.filter((job) => job.id !== id);
-        setJobs(updatedJobs);
-    }
-
-    // 5. Search aur Status ke mutabiq list filter karna
-    const filteredJobs = jobs.filter((job) => {
-        const matchCompany = job.company.toLowerCase().includes(searchText.toLowerCase());
-        const matchStatus = selectedStatus === 'All' || job.status === selectedStatus;
-        return matchCompany && matchStatus;
-    });
+        {
+            id: 6,
+            company: 'AlphaSoft',
+            role: 'Software Engineer',
+            status: 'Offer',
+            statusClass: 'success',
+            date: '12 Nov 2026'
+        },
+        {
+            id: 7,
+            company: 'ByteWorks',
+            role: 'JavaScript Developer',
+            status: 'Rejected',
+            statusClass: 'danger',
+            date: '10 Nov 2026'
+        },
+        {
+            id: 8,
+            company: 'CyberNova',
+            role: 'React Native Developer',
+            status: 'Pending',
+            statusClass: 'pending',
+            date: '08 Nov 2026'
+        },
+        {
+            id: 9,
+            company: 'NextGen AI',
+            role: 'Full Stack Engineer',
+            status: 'Interview',
+            statusClass: 'pending',
+            date: '05 Nov 2026'
+        },
+        {
+            id: 10,
+            company: 'Apex Solutions',
+            role: 'Web Developer',
+            status: 'Offer',
+            statusClass: 'success',
+            date: '01 Nov 2026'
+        }
+    ];
 
     return (
-        <div className="main-area">
-
-            {/* --- Top 4 Summary Cards --- */}
+        <main className="main-content-area">
             <div className="stats-container">
-                <div className="stat-card">
-                    <div className="stat-icon blue-bg">💼</div>
-                    <div>
-                        <h3>{totalJobs}</h3>
-                        <p>Total Applications</p>
+                {statsData.map((stat) => (
+                    <div className="stat-card" key={stat.id}>
+                        <h3>{stat.title}</h3>
+                        <p>{stat.value}</p>
                     </div>
-                </div>
-
-                <div className="stat-card">
-                    <div className="stat-icon green-bg">📨</div>
-                    <div>
-                        <h3>{appliedJobs}</h3>
-                        <p>Applied Jobs</p>
-                    </div>
-                </div>
-
-                <div className="stat-card">
-                    <div className="stat-icon yellow-bg">📅</div>
-                    <div>
-                        <h3>{interviewJobs}</h3>
-                        <p>Interview Scheduled</p>
-                    </div>
-                </div>
-
-                <div className="stat-card">
-                    <div className="stat-icon red-bg">❌</div>
-                    <div>
-                        <h3>{rejectedJobs}</h3>
-                        <p>Rejected Applications</p>
-                    </div>
-                </div>
+                ))}
             </div>
 
-            {/* --- My Job Applications Box --- */}
-            <div className="jobs-box">
-                <div className="jobs-header">
-                    <h2>💼 My Job Applications</h2>
-                    <button className="add-btn" onClick={() => alert('Add New Job Clicked!')}>
-                        + Add New Job
-                    </button>
-                </div>
-
-                {/* Search & Filter */}
-                <div className="filter-row">
-                    <input
-                        type="text"
-                        className="search-input"
-                        placeholder="🔍 Search by company..."
-                        value={searchText}
-                        onChange={(e) => setSearchText(e.target.value)}
-                    />
-
-                    <select
-                        className="filter-select"
-                        value={selectedStatus}
-                        onChange={(e) => setSelectedStatus(e.target.value)}
-                    >
-                        <option value="All">All Status</option>
-                        <option value="Applied">Applied</option>
-                        <option value="Interview">Interview</option>
-                        <option value="Rejected">Rejected</option>
-                    </select>
-                </div>
-
-                {/* Jobs List */}
-                <div className="job-list">
-                    {filteredJobs.map((job) => (
-                        <div key={job.id} className="job-item">
-
-                            {/* Company Details */}
-                            <div className="company-info">
-                                <div className="company-logo" style={{ color: job.logoColor }}>
-                                    {job.logo}
-                                </div>
-                                <div>
-                                    <h4>{job.company}</h4>
-                                    <p>💼 {job.role}</p>
-                                    <p>📍 {job.location}</p>
-                                </div>
-                            </div>
-
-                            {/* Date */}
-                            <div className="job-date">📅 {job.date}</div>
-
-                            {/* Status Badge */}
-                            <div>
-                                <span className={`badge badge-${job.status}`}>
-                                    ● {job.status}
-                                </span>
-                            </div>
-
-                            {/* Edit & Delete Buttons */}
-                            <div className="action-buttons">
-                                <button
-                                    className="edit-btn"
-                                    onClick={() => alert('Editing ' + job.company)}
-                                >
-                                    ✏️ Edit
-                                </button>
-                                <button
-                                    className="delete-btn"
-                                    onClick={() => deleteJob(job.id)}
-                                >
-                                    🗑️ Delete
-                                </button>
-                            </div>
-
-                        </div>
-                    ))}
-
-                    {/* Agar koi job match na ho */}
-                    {filteredJobs.length === 0 && (
-                        <p style={{ textAlign: 'center', color: '#888' }}>No jobs found.</p>
-                    )}
+            <div className="content-section">
+                <h2>Recent Applications</h2>
+                <div className="table-wrapper">
+                    <table className="jobs-table">
+                        <thead>
+                            <tr>
+                                <th>Company</th>
+                                <th>Role</th>
+                                <th>Status</th>
+                                <th>Date Applied</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {recentJobs.map((job) => (
+                                <tr key={job.id}>
+                                    <td>{job.company}</td>
+                                    <td>{job.role}</td>
+                                    <td>
+                                        <span className={`badge ${job.statusClass}`}>
+                                            {job.status}
+                                        </span>
+                                    </td>
+                                    <td>{job.date}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
                 </div>
             </div>
-
-        </div>
+        </main>
     );
 }
 
