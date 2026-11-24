@@ -37,7 +37,8 @@
     padding: 8px 12px 24px 12px;
     border-bottom: 1px solid rgba(254, 243, 199, 0.08);
 }
-#sidebar-logo{
+
+#sidebar-logo {
     text-decoration: none;
 
 }
@@ -282,6 +283,37 @@
     font-weight: 600;
     color: #ffffff;
     margin-bottom: 20px;
+}
+
+.content-section button {
+    font-size: 18px;
+    font-weight: 600;
+    color: #0f172a;
+    background-color: #fbbf24;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(251, 191, 36, 0.35);
+    transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.content-section button:hover {
+    background-color: #f59e0b;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(251, 191, 36, 0.5);
+}
+
+.content-section button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(251, 191, 36, 0.3);
+}
+
+#content-section-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .table-wrapper {

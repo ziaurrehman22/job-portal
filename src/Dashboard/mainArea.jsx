@@ -1,4 +1,4 @@
-import React from 'react';
+import { Link } from 'react-router'
 
 
 function MainArea() {
@@ -10,78 +10,6 @@ function MainArea() {
     ];
 
     const recentJobs = [
-        {
-            id: 1,
-            company: 'TechCorp',
-            role: 'Frontend Developer',
-            status: 'Interview',
-            statusClass: 'pending',
-            date: '24 Nov 2026'
-        },
-        {
-            id: 2,
-            company: 'InnoSoft',
-            role: 'React Developer',
-            status: 'Offer',
-            statusClass: 'success',
-            date: '20 Nov 2026'
-        },
-        {
-            id: 3,
-            company: 'DataCloud',
-            role: 'UI/UX Engineer',
-            status: 'Rejected',
-            statusClass: 'danger',
-            date: '15 Nov 2026'
-        },
-        {
-            id: 4,
-            company: 'CloudScale',
-            role: 'Backend Engineer',
-            status: 'Pending',
-            statusClass: 'pending',
-            date: '22 Nov 2026'
-        },
-        {
-            id: 5,
-            company: 'PixelCraft',
-            role: 'UI Designer',
-            status: 'Interview',
-            statusClass: 'pending',
-            date: '18 Nov 2026'
-        },
-        {
-            id: 6,
-            company: 'AlphaSoft',
-            role: 'Software Engineer',
-            status: 'Offer',
-            statusClass: 'success',
-            date: '12 Nov 2026'
-        },
-        {
-            id: 7,
-            company: 'ByteWorks',
-            role: 'JavaScript Developer',
-            status: 'Rejected',
-            statusClass: 'danger',
-            date: '10 Nov 2026'
-        },
-        {
-            id: 8,
-            company: 'CyberNova',
-            role: 'React Native Developer',
-            status: 'Pending',
-            statusClass: 'pending',
-            date: '08 Nov 2026'
-        },
-        {
-            id: 9,
-            company: 'NextGen AI',
-            role: 'Full Stack Engineer',
-            status: 'Interview',
-            statusClass: 'pending',
-            date: '05 Nov 2026'
-        },
         {
             id: 10,
             company: 'Apex Solutions',
@@ -104,7 +32,10 @@ function MainArea() {
             </div>
 
             <div className="content-section">
-                <h2>Recent Applications</h2>
+                <div id="content-section-header">
+                    <h2>Recent Applications</h2>
+                    <Link to='/AddJob'><button>Add new Job</button></Link>
+                </div>
                 <div className="table-wrapper">
                     <table className="jobs-table">
                         <thead>
